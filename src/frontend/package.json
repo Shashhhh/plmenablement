@@ -1,0 +1,27 @@
+{
+  "name": "siemens",
+  "version": "1.0.0",
+  "main": "expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~51.0.14",
+    "expo-status-bar": "~1.12.1",
+    "react": "18.2.0",
+    "react-native": "0.74.2",
+    "react-native-use-websocket": "^0.2.6",
+    "react-native-vector-icons": "^10.1.0",
+    "react-native-websocket": "^1.0.2",
+    "websocket": "^1.0.35",
+    "ws": "^8.17.1",
+    "expo-av": "~14.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  },
+  "private": true
+}
