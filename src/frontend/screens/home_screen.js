@@ -1,30 +1,21 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function HomeScreen({ navigation }) {
-
   return (
     <View style={styles.container}>
       <Text style={styles.welcomeText}>Welcome to Siemens GPT Trainer!</Text>
       <Text style={styles.helperText}>This is an unofficial Siemens app that is here to help answer any questions you have about blah blah blah, click any of the buttons below to continue!</Text>
       <View style={styles.buttonContainer}>
-        <View style={styles.buttonAlign}>
-          <TouchableOpacity onPress={() => navigation.navigate('machine_shop_screen')}>
-            <Text style={styles.buttonText}>Machinist GPT</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.buttonAlign}>
-          <TouchableOpacity onPress={() => navigation.navigate('machine_shop_screen')}>
-            <Text style={styles.buttonText}>Machinist GPT</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.buttonAlign}>
-          <TouchableOpacity onPress={() => navigation.navigate('machine_shop_screen')}>
-            <Text style={styles.buttonText}>Machinist GPT</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.buttonAlign} onPress={() => navigation.navigate('Machinist GPT')}>
+          <Text style={styles.buttonText}>Machinist GPT</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonAlign} onPress={() => navigation.navigate('Machinist GPT')}>
+          <Text style={styles.buttonText}>Machinist GPT</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonAlign} onPress={() => navigation.navigate('Machinist GPT')}>
+          <Text style={styles.buttonText}>Machinist GPT</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
