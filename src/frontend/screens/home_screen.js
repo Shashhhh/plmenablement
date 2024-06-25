@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    padding: 10,
+    paddingVertical: 30,
+    paddingHorizontal: 10,
   },
   welcomeText: {
     fontSize: 25,
