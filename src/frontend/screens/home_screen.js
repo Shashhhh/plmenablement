@@ -23,13 +23,13 @@ export default function HomeScreen({ navigation }) {
     
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.MachinistButton} onPress={() => navigation.navigate('Machinist GPT')}>
-            <Text style={styles.buttonText}>Machinist GPT</Text>
+            <Text style={styles.buttonText}>Learn About the Industry</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.Button2} onPress={() => navigation.navigate('Machinist GPT')}>
-            <Text style={styles.buttonText}>Machinist GPT</Text>
+            <Text style={styles.buttonText}>Practice your Discovery</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.Button3} onPress={() => navigation.navigate('Machinist GPT')}>
-            <Text style={styles.buttonText}>Machinist GPT</Text>
+            <Text style={styles.buttonText}>Simulate a Sales Call</Text>
           </TouchableOpacity>
 
       </View>
