@@ -22,13 +22,13 @@ export default function HomeScreen({ navigation }) {
         <Text style={styles.helperText}>This simulator will help you learn about prospects and customers in the tool and die industry. Select one of the simulators below to get started!</Text>
     
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.MachinistButton} onPress={() => navigation.navigate('Machinist GPT')}>
+          <TouchableOpacity style={styles.MachinistButton} onPress={() => navigation.navigate('Handler', {'assistantChoice' : 'Machinist'})}>
             <Text style={styles.buttonText}>Learn About the Industry</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.Button2} onPress={() => navigation.navigate('Machinist GPT')}>
+          <TouchableOpacity style={styles.DiscoveryButton} onPress={() => navigation.navigate('Handler', {'assistantChoice' : 'Discovery'})}>
             <Text style={styles.buttonText}>Practice your Discovery</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.Button3} onPress={() => navigation.navigate('Machinist GPT')}>
+          <TouchableOpacity style={styles.SalesButton} onPress={() => navigation.navigate(' Handler', {'assistantChoice' : 'Sales_call'})}>
             <Text style={styles.buttonText}>Simulate a Sales Call</Text>
           </TouchableOpacity>
 
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 15,
   },
-  Button2: {
+  DiscoveryButton: {
     paddingVertical: 10,
     paddingHorizontal: 10,
     borderRadius: 10,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 15,
   },
-  Button3: {
+  SalesButton: {
     paddingVertical: 10,
     paddingHorizontal: 10,
     borderRadius: 10,

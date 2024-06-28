@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
 import ChatScreen from '../components/chat_screen';
 
-export default function MachinistGPT({ navigation }) {
+export default function Handler({ navigation, route }) {
   const [messages, setMessages] = useState([]);
   const [socket, setSocket] = useState(null);
   const [currentMessage, setCurrentMessage] = useState('');
-
+  const {assistantChoice} = route.params;
   useEffect(() => {
-    const ws = new WebSocket('ws://127.0.0.1:8000/ws/stream/');
+    const ws = new WebSocket(`ws://127.0.0.1:8000/ws/stream/${assistantChoice}/`);
 
     ws.onopen = () => {
       console.log('WebSocket connection opened');

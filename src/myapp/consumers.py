@@ -7,9 +7,13 @@ class Handler(AsyncWebsocketConsumer):
     
     async def connect(self):
         self.client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
-        self.assistant_id = "asst_Mn4aCCQPzF5dJJD80Paq5uRU"
+        self.assistant_ids = {
+            'Machinist': "asst_Mn4aCCQPzF5dJJD80Paq5uRU",
+            'Discovery': "asst_T0C53BsowHAloSFfeFX2SE6t",
+            'Sales_call': "x"
+        }
+        self.assistant_choice = self.scope["url_route"]["kwargs"]["assistant_choice"]
         self.thread = await self.client.beta.threads.create()
-
         await self.accept()
 
     async def disconnect(self, close_code):
@@ -17,13 +21,14 @@ class Handler(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         user_input = text_data.strip()
+        assistant_id = self.assistant_ids.get(self.assistant_choice, self.assistant_ids['Machinist'])
         message = await self.client.beta.threads.messages.create(
                 thread_id=self.thread.id,
                 role="user",
                 content= user_input
                 )
         stream = await self.client.beta.threads.runs.create(
-                assistant_id="asst_Mn4aCCQPzF5dJJD80Paq5uRU",
+                assistant_id=assistant_id,
                 thread_id=self.thread.id,
                 stream=True
                 )
