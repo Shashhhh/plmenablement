@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
-import ChatScreen from '../components/chat_screen';
+import ChatScreen from '../screens/chat_screen';
 
 export default function Handler({ navigation, route }) {
   const [messages, setMessages] = useState([]);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, KeyboardAvoidingView, FlatList, Text, View, StyleSheet, Platform } from 'react-native';
-import TextInputter from './text_input';
+import TextInputter from '../components/text_input';
 
 const ChatScreen = ({ messages, handleSend }) => {
   const renderItem = ({ item }) => {
@@ -32,7 +32,7 @@ const ChatScreen = ({ messages, handleSend }) => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#2D373C',
   },
   container: {
     flex: 1,
@@ -49,14 +49,15 @@ const styles = StyleSheet.create({
   },
   userMessage: {
     alignSelf: 'flex-end',
-    backgroundColor: '#DCF8C6', // Light green for user messages
+    backgroundColor: '#009999', 
   },
   responseMessage: {
     alignSelf: 'flex-start',
-    backgroundColor: '#E1E1E1', // Light gray for responses
+    backgroundColor: '#005F87',
   },
   messageText: {
     fontSize: 16,
+    color: 'white',
   },
 });
 
