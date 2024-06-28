@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { SafeAreaView, KeyboardAvoidingView, FlatList, Text, View, StyleSheet, Platform } from 'react-native';
 import TextInputter from '../components/text_input';
 
 const ChatScreen = ({ messages, handleSend }) => {
+  const flatListRef = useRef(null);
+
   const renderItem = ({ item }) => {
     return (
       <View style={[styles.messageContainer, item.isUserMessage ? styles.userMessage : styles.responseMessage]}>
         <Text style={styles.messageText}>{item.content}</Text>
       </View>
     );
+  };
+
+  const scrollToBottom = () => {
+    if (flatListRef.current) {
+      flatListRef.current.scrollToEnd({ animated: true });
+    }
   };
 
   return (
@@ -18,10 +26,13 @@ const ChatScreen = ({ messages, handleSend }) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
         <FlatList
+          ref={flatListRef}
           style={styles.list}
           data={messages}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
+          onContentSizeChange={scrollToBottom}
+          onLayout={scrollToBottom}
         />
         <TextInputter onPress={handleSend} />
       </KeyboardAvoidingView>
