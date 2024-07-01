@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import TextInput from '../components/text_input';
 import './chat_screen.css';
-
-const ChatScreen = ({ messages, handleSend }) => {
+const ChatScreen = ({ messages, handleSend, loading }) => {
 
   return (
     <div className="safeArea">
@@ -12,10 +11,12 @@ const ChatScreen = ({ messages, handleSend }) => {
             key={index}
             className={`messageContainer ${message.isUserMessage ? 'userMessage' : 'responseMessage'}`}
           >
-            <p className="messageText">{message.content}</p>
+           <p  className="messageText">{message.content}</p>
           </div>
+          
         ))}
       </div>
+      {loading && <div class="loading"></div>}
       <div className="inputContainer">
         <TextInput onSend={handleSend} />
       </div>

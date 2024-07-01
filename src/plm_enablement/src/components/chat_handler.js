@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import ChatScreen from '../screens/chat_screen';
 import './chat_handler.css';
+import 'ldrs/mirage'
+
 
 
 export default function Handler() {
@@ -94,7 +96,8 @@ export default function Handler() {
 
   return (
     <div className="container">
-      <ChatScreen messages={messages} handleSend={handleSend} />
+      <ChatScreen messages={messages} handleSend={handleSend} loading = {loading}  />
+
       <div ref={bottomRef}></div>
     </div>
   );
