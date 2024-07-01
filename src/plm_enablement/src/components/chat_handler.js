@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import ChatScreen from '../screens/chat_screen';
 import './chat_handler.css';
+
 
 export default function Handler() {
   const location = useLocation();
@@ -9,6 +10,7 @@ export default function Handler() {
   const [socket, setSocket] = useState(null);
   const [currentMessage, setCurrentMessage] = useState('');
   const assistantChoice = new URLSearchParams(location.search).get('assistantChoice');
+  const [loading, setLoading] = useState(false);
   const bottomRef = useRef();
 
   const scrollToBottom = () => {
@@ -24,7 +26,6 @@ export default function Handler() {
     scrollToBottom();
   }, [messages]);
 
-
   useEffect(() => {
     const ws = new WebSocket(`ws://127.0.0.1:8000/ws/stream/${assistantChoice}/`);
 
@@ -39,15 +40,18 @@ export default function Handler() {
       } else if (responseData.error) {
         alert('Error: ' + responseData.error);
       }
+      setLoading(false);
     };
 
     ws.onerror = (error) => {
       alert('Error: WebSocket error occurred');
       console.error('WebSocket error:', error);
+      setLoading(false);
     };
 
     ws.onclose = () => {
       console.log('WebSocket connection closed');
+      setLoading(false);
     };
 
     setSocket(ws);
@@ -66,6 +70,7 @@ export default function Handler() {
     setMessages(prevMessages => [...prevMessages, newUserMessage]);
 
     if (socket) {
+      setLoading(true); // Set loading to true when sending a message
       socket.send(text);
     } else {
       alert('Error: WebSocket connection is not open');
@@ -82,7 +87,6 @@ export default function Handler() {
         ]);
       } else {
         setMessages(prevMessages => [...prevMessages, { content: currentMessage, isUserMessage: false }]);
-        
       }
       setCurrentMessage('');
     }
@@ -90,7 +94,8 @@ export default function Handler() {
 
   return (
     <div className="container">
-      <ChatScreen messages={messages} handleSend={handleSend}/>
+      <ChatScreen messages={messages} handleSend={handleSend} />
+      <div ref={bottomRef}></div>
     </div>
   );
 }
