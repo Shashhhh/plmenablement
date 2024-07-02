@@ -29,7 +29,7 @@ export default function Handler() {
   }, [messages]);
 
   useEffect(() => {
-    const ws = new WebSocket(`wss://0.0.0.0:10000/ws/stream/${assistantChoice}/`);
+    const ws = new WebSocket(`wss://backend-ckmm.onrender.com/ws/stream/${assistantChoice}/`);
 
     ws.onopen = () => {
       console.log('WebSocket connection opened');
