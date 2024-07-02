@@ -13,7 +13,6 @@ const ChatScreen = ({ messages, handleSend, loading }) => {
           >
            <p  className="messageText">{message.content}</p>
           </div>
-          
         ))}
       </div>
       {loading && <div class="loading"></div>}
