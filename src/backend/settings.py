@@ -151,3 +151,7 @@ CHANNEL_LAYERS = {
         'BACKEND': 'channels.layers.InMemoryChannelLayer',
     },
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "https://plmenablement.onrender.com",
+]
