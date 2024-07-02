@@ -29,7 +29,8 @@ export default function Handler() {
   }, [messages]);
 
   useEffect(() => {
-    const ws = new WebSocket(`ws://127.0.0.1:8000/ws/stream/${assistantChoice}/`);
+    const ws = new WebSocket(`wss://backend-ckmm.onrender.com/ws/stream/${assistantChoice}/`);
+
 
     ws.onopen = () => {
       console.log('WebSocket connection opened');
