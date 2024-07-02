@@ -7,4 +7,4 @@ gunicorn
 uvicorn
 python-dotenv
 daphne
-corsheaders
+django-cors-headers=4.3.1
