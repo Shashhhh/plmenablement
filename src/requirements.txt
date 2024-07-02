@@ -7,3 +7,4 @@ gunicorn
 uvicorn
 python-dotenv
 daphne
+corsheaders
