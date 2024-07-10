@@ -8,19 +8,19 @@ export default function HomeScreen() {
   return (
     <div className='App'>
       <div className="container">
-        <div className="spacer" />
+
         <div className="textContainer">
           <div className="welcomeText">Sales</div>
           <div className="welcomeText">Enablement</div>
           <div className="aboutText">about</div>
           <div className="titleText">Tool and Die Shops</div>
-        </div>
-        <div className="spacer" />
-      <div className="buttonContainer">
         <div className="helperText">
           This simulator will help you learn about prospects and customers in the tool and die industry. Select one of the simulators below to get started!
         </div>
-        <button className="MachinistButton" onClick={() => navigate('/chat?assistantChoice=Machinist')}>
+        </div>
+      <div className="bodyContainer">
+      <div>
+      <button className="MachinistButton" onClick={() => navigate('/chat?assistantChoice=Machinist')}>
           Learn About the Industry
         </button>
         <button className="DiscoveryButton" onClick={() => navigate('/chat?assistantChoice=Discovery')}>
@@ -29,6 +29,8 @@ export default function HomeScreen() {
         <button className="SalesButton" onClick={() => navigate('/chat?assistantChoice=Sales_call')}>
           Simulate a Sales Call
         </button>
+      </div>
+
       </div>
     </div>
     </div>
