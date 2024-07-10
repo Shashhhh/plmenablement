@@ -150,6 +150,9 @@ border: none;
   .App {
     background-position: top;
   }
+  .container {
+    justify-content: center;
+  }
   .welcomeText {
     font-size: 3.5rem;
   }
@@ -162,6 +165,7 @@ border: none;
   .textContainer {
     padding-left: 100px;
     width: 65%;
+
   }
 .helperText {
   font-size: 1.5rem;
@@ -169,10 +173,11 @@ border: none;
 .bodyContainer {
   width: 75%;
   padding-bottom: 5px;
+  padding-top: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -125px;
+
 }
 .MachinistButton,
 .DiscoveryButton,
