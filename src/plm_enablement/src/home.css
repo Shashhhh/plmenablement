@@ -68,9 +68,21 @@ border: none;
 }
 
 .DiscoveryButton {
+
   background-color: #2387aa;
 }
-
+.SalesButton:hover{
+  background-color: #004666;
+  transition: 0.7s;
+}
+.MachinistButton:hover {
+  background-color: #007777;
+  transition: 0.7s;
+}
+.DiscoveryButton:hover {
+  background-color: #1c6c87;
+  transition: 0.7s;
+}
 @media (min-width: 320px)
 {
   /* Design for mobile devices*/
@@ -92,8 +104,6 @@ border: none;
   }
 .helperText {
   font-size: 1rem;
-
-
 }
 .MachinistButton,
 .DiscoveryButton,
@@ -164,7 +174,7 @@ border: none;
   }
   .textContainer {
     padding-left: 100px;
-    width: 65%;
+    width: 35%;
 
   }
 .helperText {
