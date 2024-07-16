@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import ChatScreen from '../screens/chat_screen';
 import './chat_handler.css';
 import 'ldrs/mirage'
+import Chat from './chat';
 
 
 
@@ -29,7 +29,8 @@ export default function Handler() {
   }, [messages]);
 
   useEffect(() => {
-    const ws = new WebSocket(`wss://backend-ckmm.onrender.com/ws/stream/${assistantChoice}/`);
+    //const ws = new WebSocket(`wss://backend-ckmm.onrender.com/ws/stream/${assistantChoice}/`);
+    const ws = new WebSocket(`ws://127.0.0.1:8000/ws/stream/${assistantChoice}/`);
 
     ws.onopen = () => {
       console.log('WebSocket connection opened');
@@ -72,7 +73,7 @@ export default function Handler() {
     setMessages(prevMessages => [...prevMessages, newUserMessage]);
 
     if (socket) {
-      setLoading(true); // Set loading to true when sending a message
+      setLoading(true);
       socket.send(text);
     } else {
       alert('Error: WebSocket connection is not open');
@@ -96,7 +97,7 @@ export default function Handler() {
 
   return (
     <div className="container">
-      <ChatScreen messages={messages} handleSend={handleSend} loading = {loading}  />
+      <Chat messages={messages} handleSend={handleSend} loading = {loading}  />
 
       <div ref={bottomRef}></div>
     </div>

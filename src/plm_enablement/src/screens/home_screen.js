@@ -8,7 +8,6 @@ export default function HomeScreen() {
   return (
     <div className='App'>
       <div className="container">
-
         <div className="textContainer">
           <div className="welcomeText">Sales</div>
           <div className="welcomeText">Enablement</div>

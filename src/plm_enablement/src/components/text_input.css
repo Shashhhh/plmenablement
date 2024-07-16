@@ -4,6 +4,10 @@
   justify-content: center;
   width: 100%;
   max-width: 850px;
+  flex-shrink: 0;
+  position: fixed;
+  bottom: 0;
+  padding: 10px 0;
 }
 
 .textInput {

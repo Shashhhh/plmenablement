@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomeScreen from './screens/home_screen';
 import Handler from './components/chat_handler';
+import Chat from './components/chat';
 import './home.css';
 
 const App = () => {
