@@ -73,7 +73,7 @@ export default function Handler() {
     setMessages(prevMessages => [...prevMessages, newUserMessage]);
 
     if (socket) {
-      setLoading(true); // Set loading to true when sending a message
+      setLoading(true);
       socket.send(text);
     } else {
       alert('Error: WebSocket connection is not open');
