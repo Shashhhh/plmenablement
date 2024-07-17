@@ -9,7 +9,7 @@ const Chat = ({ messages, handleSend, loading }) => {
           </div>
             <div className="context">
                 <img src="./MachinistImage.png" alt="Machinist" />
-                <div className="contextText2">
+                <div className="contextText">
                   <span style={{ fontWeight: 'bold' }}>
                   Hi,
                   </span>

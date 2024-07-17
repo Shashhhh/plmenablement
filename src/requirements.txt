@@ -10,3 +10,4 @@ daphne
 django-cors-headers==4.3.1
 whitenoise
 websockets
+tailwindcss
