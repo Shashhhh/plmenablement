@@ -16,7 +16,6 @@ body, html, .chat {
     align-items: center;
     color: white;
     overflow-y: scroll;
-
     .headerBand
     {
         font-size: 1.5rem;
