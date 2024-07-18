@@ -87,7 +87,7 @@ border: none;
 {
   /* Design for mobile devices*/
   .container {
-    margin-top: 50px;
+    margin-top: 25px;
     justify-content: space-around;
   }
   .welcomeText {
