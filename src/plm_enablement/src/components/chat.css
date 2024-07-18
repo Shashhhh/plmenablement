@@ -10,11 +10,13 @@ body, html, .chat {
     margin: 0;
     padding: 0;
     width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;   
     align-items: center;
     color: white;
     overflow-y: scroll;
+
     .headerBand
     {
         font-size: 1.5rem;
@@ -35,7 +37,7 @@ body, html, .chat {
         flex-direction: row;
         .contextText
         {
-            padding: 10px;
+            padding-left: 10px;
         }
     }
         .chatScreen
@@ -64,7 +66,8 @@ body, html, .chat {
               .responseMessage {
                 background-color: #005f87;
                 text-align: left;
-                padding: 10px;
+                padding-left: 10px;
+                padding-right: 10px;  
                 border-radius: 15px;
                 display: inline-block;
                 align-self: flex-start;
@@ -138,32 +141,74 @@ body, html, .chat {
 .chat::-webkit-scrollbar-thumb:hover {
     background-color: #555;
 }
-
-@media (max-width: 767px)
+@media (min-width: 320px) and (max-width: 767px)
 {
-    .chat
+  .chat
     {
-       
+      justify-content: center;
+      padding-left: 10px;
+      .overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        z-index: 1;
+      }
+      .welcomeDialog
+      {
+        position: fixed;
+        width: 80%;
+        border-radius: 25px;
+        color: white;
+        background-color: #2d373c;
+        z-index: 2;
+        .dialogButtonContainer
+        {
+          display: flex;
+          justify-content: center;
+          margin-top: 10px;
+          .dialogButton
+          {
+            font-size: 1rem;
+            display: flex;
+            color: white;
+            background-color: transparent;
+            border-radius: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-weight: bold;
+          }
+        }
+      }
         .headerBand
         {
-            font-size: 1.15rem;
+            font-size: 1.25rem;
         }
-        .context {
-            flex-direction: column;
-            max-height: 25%;
-            .contextText
-            {
-                padding: 10px;
-            }
+        .inputContainer
+        {
+          width: 90%;
+        }
+        .chatScreen
+        {
+          width: 90%;
         }
     }
 }
-
-@media (max-width: 1023px)
+@media (min-width: 768px) and (max-width: 1023px)
 {
     .chat
     {
+        .headerBand
+        {
+            font-size: 1.75rem;
+        }
         .context {
+            flex-direction: row;
             width: 95%;
             img
             {
@@ -172,9 +217,26 @@ body, html, .chat {
                 height: 200px;
             }
         }
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px)
+{
+    .chat
+    {
+        .context {
+            width: 70%;
+            max-height: 150px;
+            img
+            {
+                object-fit: cover;
+                width: 150px;
+                height: 150px;
+            }
+        }
         .chatScreen
         {
-            width: 80%;
+            width: 70%;
 
         }
         .inputContainer {

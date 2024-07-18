@@ -94,7 +94,7 @@ border: none;
   }
   .textContainer {
       padding-left: 30px;
-      width: 85%;
+      width: 75%;
   }
   .aboutText {
     font-size: 1.25rem;
@@ -130,6 +130,7 @@ border: none;
   }
   .textContainer {
     padding-left: 60px;
+    width: 60%;
   }
   .aboutText {
     font-size: 1.75rem;
