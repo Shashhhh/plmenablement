@@ -18,9 +18,6 @@ const Chat = ({ messages, handleSend, loading }) => {
     return (
         
         <div className="chat">
-        <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-        </head>
         <div className="headerBand">
         Learn about the Tool and Die industry
         </div>
