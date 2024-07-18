@@ -16,7 +16,7 @@ export default function HomeScreen() {
         <div className="helperText">
           This simulator will help you learn about prospects and customers in the tool and die industry. Select one of the simulators below to get started!
         </div>
-        </div>
+      </div>
       <div className="bodyContainer">
       <div>
       <button className="MachinistButton" onClick={() => navigate('/chat?assistantChoice=Machinist')}>

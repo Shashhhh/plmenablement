@@ -83,10 +83,11 @@ border: none;
   background-color: #1c6c87;
   transition: 0.7s;
 }
-@media (min-width: 320px)
+@media (min-width: 320px) and (max-width: 767px)
 {
   /* Design for mobile devices*/
   .container {
+    margin-top: 50px;
     justify-content: space-around;
   }
   .welcomeText {
@@ -119,7 +120,7 @@ border: none;
 }
 }
 
-@media (min-width: 768px)
+@media (min-width: 768px) and (max-width: 1023px)
 {
   /* Design for tablet devices*/
   .container {
