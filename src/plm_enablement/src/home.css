@@ -68,20 +68,23 @@ border: none;
 }
 
 .DiscoveryButton {
-
   background-color: #2387aa;
 }
 .SalesButton:hover{
   background-color: #004666;
-  transition: 0.7s;
+  transition: 0.5s;
+  box-shadow: 0 0 10px 0 #005F87 inset, 0 0 10px 4px #005F87;
 }
 .MachinistButton:hover {
-  background-color: #007777;
-  transition: 0.7s;
+  background: #007777;
+  transition: 0.5s;
+  box-shadow: 0 0 10px 0 #009999 inset, 0 0 10px 4px #009999;
+
 }
 .DiscoveryButton:hover {
   background-color: #1c6c87;
-  transition: 0.7s;
+  transition: 0.5s;
+  box-shadow: 0 0 10px 0 #2387aa inset, 0 0 10px 4px #2387aa;
 }
 @media (min-width: 320px) and (max-width: 767px)
 {

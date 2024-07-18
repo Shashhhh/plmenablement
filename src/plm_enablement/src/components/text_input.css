@@ -42,3 +42,7 @@
   width: 45px;
   height: 45px;
 }
+.sendButton:active {
+  transform: translateY(2px);
+
+}
