@@ -7,8 +7,7 @@ body, html, .chat {
 }
 .chat
 {
-    margin: 0;
-    padding: 0;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     width: 100vw;
     height: 100vh;
     display: flex;
