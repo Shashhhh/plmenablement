@@ -92,6 +92,7 @@ body, html, .chat {
             bottom: 0;
           }
 }
+
 .loading {
     --uib-size: 40px;
     --uib-color: white;
@@ -175,13 +176,17 @@ body, html, .chat {
             font-size: 1rem;
             display: flex;
             color: white;
-            background-color: transparent;
+            background-color: #009999;;
             border-radius: 10px;
             padding-top: 5px;
             padding-bottom: 5px;
             padding-left: 10px;
             padding-right: 10px;
             font-weight: bold;
+          }
+          .dialogButton:active {
+            background-color: #00cccc;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
           }
         }
       }
