@@ -4,8 +4,6 @@ import './chat_handler.css';
 import 'ldrs/mirage'
 import Chat from './chat';
 
-
-
 export default function Handler() {
   const location = useLocation();
   const [messages, setMessages] = useState([]);
