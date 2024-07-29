@@ -9,8 +9,9 @@ class Handler(AsyncWebsocketConsumer):
         self.client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
         self.assistant_ids = {
             'Machinist': "asst_Mn4aCCQPzF5dJJD80Paq5uRU",
-            'Discovery': "asst_T0C53BsowHAloSFfeFX2SE6t",
-            'Sales_call': "x"
+            'Discovery': "x",
+            'Sales_call': "x",
+            'Value_prop': "asst_D6l7CGFwkpTuGQIR4Cw9SMAh",
         }
         self.assistant_choice = self.scope["url_route"]["kwargs"]["assistant_choice"]
         self.thread = await self.client.beta.threads.create()
