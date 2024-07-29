@@ -22,7 +22,7 @@ class Handler(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         user_input = text_data.strip()
-        assistant_id = self.assistant_ids.get(self.assistant_choice, self.assistant_ids['Machinist'])
+        assistant_id = self.assistant_ids.get(self.assistant_choice, self.assistant_ids['Value_prop'])
         message = await self.client.beta.threads.messages.create(
                 thread_id=self.thread.id,
                 role="user",
