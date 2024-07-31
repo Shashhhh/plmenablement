@@ -1,79 +1,141 @@
-import "./chat.css";
-import TextInput from '../components/text_input';
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import './chat.css';
+import { FaArrowUp } from "react-icons/fa6";
 
-const Chat = ({ messages, handleSend, loading }) => {
-    const [isMobileScreen, setIsMobileScreen] = useState(window.innerWidth < 768);
-    const [showOverlay, setShowOverlay] = useState(true);
-    useEffect(() => {
-        const handleResize = () => {
-        setIsMobileScreen(window.innerWidth < 768);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-    const handleOverlay = () => {
-        setShowOverlay(false);
+function Chat() {
+  const [messages, setMessages] = useState([{ content:`**Hi!**\n\nI'm Hank Spanner. I'm the owner of a machine shop with extensive experience in the Mold and Die industry. 30 years ago, I started as a machinist, and grew into owning my own shop in 2014. With my wide-ranging background, I think I can provide a pretty good perspective of the industry, both from the shop floor to the front office.\n\n**What's your name?**`, isUserMessage: false }]);
+  const [socket, setSocket] = useState(null);
+  const [currentMessage, setCurrentMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [renderedMessages, setRenderedMessages] = useState([]);
+
+  const assistantChoice = "Value_prop";
+
+  useEffect(() => {
+    const ws = new WebSocket(`wss://backend-ckmm.onrender.com/ws/stream/${assistantChoice}/`);
+    ws.onopen = () => {
+      console.log('WebSocket connection opened');
     };
-    return (
-        
-        <div className="chat">
-        <div className="headerBand">
-        Learn about the Tool and Die industry
+
+    ws.onmessage = (event) => {
+      const responseData = JSON.parse(event.data);
+      console.log('Received WebSocket message:', responseData);
+      if (responseData.delta) {
+        updateCurrentMessage(responseData.delta);
+      } else if (responseData.error) {
+        alert('Error: ' + responseData.error);
+      }
+      setLoading(false);
+    };
+
+    ws.onerror = (error) => {
+      alert('Error: WebSocket error occurred');
+      console.error('WebSocket error:', error);
+      setLoading(false);
+    };
+
+    ws.onclose = () => {
+      console.log('WebSocket connection closed');
+      setLoading(false);
+    };
+
+    setSocket(ws);
+
+    return () => {
+      ws.close();
+    };
+  }, [assistantChoice]);
+
+  const updateCurrentMessage = (deltaText) => {
+    setCurrentMessage(prev => prev + deltaText);
+  };
+
+  const onSend = (text) => {
+    const newUserMessage = { content: text, isUserMessage: true };
+    setMessages(prevMessages => [...prevMessages, newUserMessage]);
+
+    if (socket) {
+      setLoading(true);
+      socket.send(text);
+    } else {
+      alert('Error: WebSocket connection is not open');
+    }
+  };
+
+  useEffect(() => {
+    if (currentMessage.trim() !== '') {
+      const lastMessageIndex = messages.length - 1;
+      if (lastMessageIndex >= 0 && !messages[lastMessageIndex].isUserMessage) {
+        setMessages(prevMessages => [
+          ...prevMessages.slice(0, lastMessageIndex),
+          { ...prevMessages[lastMessageIndex], content: prevMessages[lastMessageIndex].content + currentMessage }
+        ]);
+      } else {
+        setMessages(prevMessages => [...prevMessages, { content: currentMessage, isUserMessage: false }]);
+      }
+      setCurrentMessage('');
+    }
+  }, [currentMessage, messages]);
+
+  useEffect(() => {
+    const processedMessages = messages.map(message => ({
+      ...message,
+      htmlContent: <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
+    }));
+    setRenderedMessages(processedMessages);
+  }, [messages]);
+
+  const [input, setInput] = useState('');
+  const handleSend = () => {
+    if (input.trim() !== '') {
+      onSend(input);
+      setInput('');
+    }
+  };
+
+  return (
+    <div className="container">
+      <div className="chat">
+        <div className='pageHeader'>
+          <p>Learn about the Tool and Die industry</p>
         </div>
-        {showOverlay && isMobileScreen && <div className="overlay"/>}
-        {isMobileScreen ?
-        (<dialog className="welcomeDialog" open>
-            <span style={{ fontWeight: 'bold' }}>
-                Hi,
-            </span>
-            <p>
-                I'm Hank Spanner. I'm the owner of a machine shop with extensive experience in the Mold and Die industry. 30 years ago, I started as a machinist, and grew into owning my own shop in 2014. With my wide-ranging background, I think I can provide a pretty good perspective of the industry, both from the shop floor to the front office. 
-            </p>
-            <span style={{ fontWeight: 'bold' }}>
-                What's your name?
-            </span>
-            <form method="dialog">
-            <div className="dialogButtonContainer">
-                <button className= "dialogButton" onClick={handleOverlay}>Close</button>
+        <div className='chatScreen'>
+          {renderedMessages.map((message, index) => (
+            <div
+              key={index}
+              className={`messageContainer ${message.isUserMessage ? 'userMessage' : 'responseMessage'}`}
+            >
+              <div className="messageText">
+                {message.htmlContent}
+              </div>
             </div>
-                
-            </form>
-            </dialog>)
-        :
-        (<div className="context">
-            <img src="./MachinistImage.png" alt="Machinist" />
-            <div className="contextText">
-                <span style={{ fontWeight: 'bold' }}>
-                    Hi,
-                </span>
-                <p>
-                    I'm Hank Spanner. I'm the owner of a machine shop with extensive experience in the Mold and Die industry. 30 years ago, I started as a machinist, and grew into owning my own shop in 2014. With my wide-ranging background, I think I can provide a pretty good perspective of the industry, both from the shop floor to the front office. 
-                </p>
-                <span style={{ fontWeight: 'bold' }}>
-                    What's your name?
-                </span>
-                </div>
-            </div>
-)
-        }
-            
-        <div className="chatScreen">
-            {messages.map((message, index) => (
-                <div
-                    key={index}
-                    className={`messageContainer ${message.isUserMessage ? 'userMessage' : 'responseMessage'}`}
-                >
-                <p className="messageText">{message.content}</p>
-                </div>
-                ))}
-            {loading && <div class="loading"></div>}
-            </div> 
-            <div className="inputContainer">
-                <TextInput onSend={handleSend} />
-            </div>
+          ))}
+          {loading && <div className="loading"></div>}
         </div>
-    );
-};
+        <div className='textInputBox'>
+          <div className="inputWrapper">
+            <input
+              type="text"
+              className="textInput"
+              placeholder="Ask anything"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSend();
+                }
+              }}
+            />
+            <button className="sendButton" onClick={handleSend}>
+              <FaArrowUp size={24} color="white" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default Chat;
