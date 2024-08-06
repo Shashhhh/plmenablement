@@ -12,6 +12,7 @@ class Handler(AsyncWebsocketConsumer):
             'Discovery': "x",
             'Sales_call': "x",
             'Value_prop': "asst_D6l7CGFwkpTuGQIR4Cw9SMAh",
+            'Marketing_Assistant': "asst_bY3w88GhMu3IeGqtykL89YrA",
         }
         self.assistant_choice = self.scope["url_route"]["kwargs"]["assistant_choice"]
         self.thread = await self.client.beta.threads.create()
