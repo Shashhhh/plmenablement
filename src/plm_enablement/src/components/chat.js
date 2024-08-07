@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import './chat.css';
@@ -13,7 +13,7 @@ function Chat() {
   const [loading, setLoading] = useState(false);
   const [renderedMessages, setRenderedMessages] = useState([]);
   const assistantChoice = new URLSearchParams(location.search).get('assistantChoice');
-
+  const chatScreenRef = useRef(null);
 
   useEffect(() => {
     const ws = new WebSocket(`wss://backend-ckmm.onrender.com/ws/stream/${assistantChoice}/`);
@@ -88,7 +88,11 @@ function Chat() {
     }));
     setRenderedMessages(processedMessages);
   }, [messages]);
-
+  useEffect(() => {
+    if (chatScreenRef.current) {
+      chatScreenRef.current.scrollTop = chatScreenRef.current.scrollHeight;
+    }
+  }, [renderedMessages, loading]);
   const [input, setInput] = useState('');
   const handleSend = () => {
     if (input.trim() !== '') {
@@ -103,7 +107,7 @@ function Chat() {
         <div className='pageHeader'>
           <p>Learn about the Tool and Die industry</p>
         </div>
-        <div className='chatScreen'>
+        <div className='chatScreen' ref={chatScreenRef}>
           {renderedMessages.map((message, index) => (
             <div
               key={index}

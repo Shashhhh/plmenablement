@@ -1,5 +1,5 @@
 :root {
-  --input-height: 50px;
+  --input-height: 40px;
   --button-height: calc(var(--input-height) * 0.8);
 }
 
@@ -96,8 +96,8 @@
       }
       .messageText ul,
       .messageText ol {
-        margin-top: -20px;
-        margin-bottom: -20px;
+        line-height: 1.25;
+        margin: 0;
         padding-left: 25px;
       }
       .messageText li {
