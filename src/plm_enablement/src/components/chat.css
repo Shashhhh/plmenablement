@@ -75,7 +75,7 @@
       }
       
     .messageText {
-        font-size: 14px;
+        font-size: 1rem;
         color: white;
         word-wrap: break-word;
         display: inline-block;
@@ -182,8 +182,8 @@
         color: white;
         .arrowIcon
         {
-          width: 24px;
-          height: 24px;
+          width: 21px;
+          height: 21px;
         }
       }
       .sendButton:hover
@@ -268,8 +268,8 @@
             width: calc(var(--button-height) * 0.9);
             .arrowIcon
             {
-              width: 21px;
-              height: 21px;
+              width: 19px;
+              height: 19px;
             }
           }
         }
