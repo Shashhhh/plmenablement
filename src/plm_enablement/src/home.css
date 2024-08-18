@@ -1,66 +1,71 @@
 .App {
   display: flex;
   background-color: transparent;
-  height: 100dvh;
+  height: 100vh;
+  width: 100vw;
   font-weight: bold;  
   background: 
-  linear-gradient(rgba(0, 0, 0, 0.85), rgba(255, 255, 255, 0)),
+  linear-gradient(rgba(0, 0, 0, 0.9), rgba(255, 255, 255, 0)),
   url('/public/toolshop.jpg');
   background-size: cover;
-  background-position: bottom;
+  background-position: top;
   color: white;
 }
-.container {
-  flex: 1;
+.homeContainer {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
-.textContainer {
+.helperContainer {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: 35%;
+}
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center; 
+  align-items: center;
   width: 50%;
-  align-self: flex-start;
+  margin-top: 15%;
 }
 .welcomeText {
-  margin-bottom: -5px;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-.aboutText {
-  margin-bottom: -5px;
-  font-size: 1rem;
-}
-.titleText {
-  margin-bottom: -5px;
-  font-size: 1.25rem;
-  font-weight: bold;
+  display: flex;
+  line-height: 1.1;
+  margin: 10px 0;
+  font-size: 4rem;
+  font-weight: 800;
 }
 .helperText {
-  font-size: 0rem;
-  margin-top: 5px;
-  font-weight: 500;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 400;
 }
 .bodyContainer {
   width: 85%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-
 .MachinistButton,
 .DiscoveryButton,
 .SalesButton {
+  width: 200px;
+  height: 75px;
+  font-size: 1.5rem;
   border-radius: 10px;
-  width: 100%;
   text-align: center;
   font-weight: bold;
   color: white;
   cursor: pointer;
   background-color: #005F87;
-  margin-bottom: 5px;
-  font-size: 1rem;
-border: none;
+  margin: 50px 10px;
+  border: none;
 }
 
 .MachinistButton {
@@ -70,137 +75,91 @@ border: none;
 .DiscoveryButton {
   background-color: #2387aa;
 }
-.SalesButton:hover{
-  background-color: #004666;
-  transition: 0.5s;
-  box-shadow: 0 0 10px 0 #005F87 inset, 0 0 10px 4px #005F87;
-}
-.MachinistButton:hover {
-  background: #007777;
-  transition: 0.5s;
-  box-shadow: 0 0 10px 0 #009999 inset, 0 0 10px 4px #009999;
 
-}
+.SalesButton:hover,
+.MachinistButton:hover,
 .DiscoveryButton:hover {
-  background-color: #1c6c87;
-  transition: 0.5s;
-  box-shadow: 0 0 10px 0 #2387aa inset, 0 0 10px 4px #2387aa;
+  transition: background-color 0.5s, transform 0.5s, color 0.5s;
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+  color: black;
 }
+
+
 @media (min-width: 320px) and (max-width: 767px)
 {
-  /* Design for mobile devices*/
-  .container {
-    justify-content: space-around;
+  .App {
+    background-position: bottom;
   }
   .welcomeText {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
-  .textContainer {
-      padding-left: 30px;
-      width: 75%;
+  .headerContainer {
+      margin-top: auto;
+      width: 90%;
   }
-  .aboutText {
-    font-size: 1.25rem;
+  .helperContainer {
+    width: 80%
   }
-  .titleText {
-    font-size: 2rem;
+  .helperText {
+    font-size: 1rem;
   }
-.helperText {
-  font-size: 1rem;
-}
+  .bodyContainer {
+    margin: auto;
+  }
 .MachinistButton,
 .DiscoveryButton,
 .SalesButton {
-  border-radius: 10px;
+  height: 15%;
   width: 100%;
   padding: 10px;
   text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 10px;
   font-size: 1.5rem;
+  margin: 10px 0;
 }
 }
-
 @media (min-width: 768px) and (max-width: 1023px)
 {
-  /* Design for tablet devices*/
-  .container {
-    justify-content: space-evenly;
-  }
   .welcomeText {
     font-size: 3.25rem;
   }
-  .textContainer {
-    padding-left: 60px;
+  .headerContainer {
+    margin-top: auto;
+    width: 75%;
+  }
+  .helperContainer {
     width: 60%;
   }
-  .aboutText {
-    font-size: 1.75rem;
+  .bodyContainer {
+    display: flex;
+    width: 100%;
+    margin: auto;
   }
-  .titleText {
+  .MachinistButton,
+  .DiscoveryButton,
+  .SalesButton {
+    flex-grow: 1;
+    margin: 10px;
+    max-width: 200px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1443px)
+{
+  .welcomeText {
     font-size: 3rem;
   }
-.helperText {
+  .helperText {
+    font-size: 1.25rem;
+  }
+  .bodyContainer {
+    width: 75%;
+  }
+.MachinistButton,
+.DiscoveryButton,
+.SalesButton {
+  width: 175px;
+  height: 60px;
   font-size: 1.25rem;
-}
-.MachinistButton,
-.DiscoveryButton,
-.SalesButton {
-  border-radius: 10px;
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-size: 2.5rem;
-}
-}
-
-@media (min-width: 1024px)
-{
-  /* Design for desktop*/
-  .App {
-    background-position: top;
-  }
-  .container {
-    justify-content: center;
-  }
-  .welcomeText {
-    font-size: 3.5rem;
-  }
-  .aboutText {
-    font-size: 2rem;
-  }
-  .titleText {
-    font-size: 3.25rem;
-  }
-  .textContainer {
-    padding-left: 100px;
-    width: 35%;
-
-  }
-.helperText {
-  font-size: 1.5rem;
-}
-.bodyContainer {
-  width: 75%;
-  padding-bottom: 5px;
-  padding-top: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-.MachinistButton,
-.DiscoveryButton,
-.SalesButton {
-  width: 200px;
-  height: 75px;
-  padding: 10px;
-  font-size: 1.5rem;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 }

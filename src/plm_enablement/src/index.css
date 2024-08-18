@@ -7,11 +7,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #2d373c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100dvh; 
-  color: white;
 }
 
 code {
