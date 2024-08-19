@@ -106,6 +106,7 @@ function Chat() {
       <div className="chat">
         <div className='pageHeader'>
           <p>Learn about the Tool and Die industry</p>
+
         </div>
         <div className='chatScreen' ref={chatScreenRef}>
           {renderedMessages.map((message, index) => (
@@ -113,6 +114,7 @@ function Chat() {
               key={index}
               className={`messageContainer ${message.isUserMessage ? 'userMessage' : 'responseMessage'}`}
             >
+
               <div className="messageText">
                 {message.htmlContent}
               </div>
