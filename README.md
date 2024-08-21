@@ -8,6 +8,7 @@ This project is currently still in development. User can currently chat with the
 
 ## Installation and Setup Instructions
 Clone down this repo. You will need `node`, `npm`, and `python` installed on your machine.
+### Frontend
 
 Installation:
 
@@ -20,3 +21,9 @@ To Start Server:
 To Visit App:
 
 `localhost:3000/` 
+
+### Backend
+
+To Start Server:
+
+`python3 manage.py runserver`
