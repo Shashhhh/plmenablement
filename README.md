@@ -7,4 +7,16 @@ This project is currently still in development. User can currently chat with the
 <img width="1512" alt="Screenshot 2024-08-21 at 5 30 39 PM" src="https://github.com/user-attachments/assets/6e84590a-aac0-4aa8-ba3a-a19dfce36dce">
 
 ## Installation and Setup Instructions
-Clone down this repo. You will need 'node', 'npm', and 'python' installed on your machine.
+Clone down this repo. You will need `node`, `npm`, and `python` installed on your machine.
+
+Installation:
+
+`npm install`  
+
+To Start Server:
+
+`npm run start`  
+
+To Visit App:
+
+`localhost:3000/` 
