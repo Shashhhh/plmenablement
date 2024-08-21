@@ -5,3 +5,5 @@ This project is currently still in development. User can currently chat with the
 ## Project Screenshots
 <img width="1507" alt="Screenshot 2024-08-21 at 5 28 51 PM" src="https://github.com/user-attachments/assets/7b822363-5f0c-488e-9d75-67513fbf0cc4">
 <img width="1512" alt="Screenshot 2024-08-21 at 5 30 39 PM" src="https://github.com/user-attachments/assets/6e84590a-aac0-4aa8-ba3a-a19dfce36dce">
+## Installation and Setup Instructions
+Clone down this repo. You will need 'node', 'npm', and 'python' installed on your machine.
