@@ -33,7 +33,6 @@ function Chat() {
     };
 
     ws.onerror = (error) => {
-      alert('Error: WebSocket error occurred');
       console.error('WebSocket error:', error);
       setLoading(false);
     };
