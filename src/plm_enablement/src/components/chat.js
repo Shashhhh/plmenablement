@@ -6,7 +6,7 @@ import { FaArrowUp } from "react-icons/fa6";
 import { useLocation } from 'react-router-dom';
 
 function Chat() {
-    const location = useLocation();
+  const location = useLocation();
   const [messages, setMessages] = useState([{ content:`**Hi!**\n\nI'm Hank Spanner. I'm the owner of a machine shop with extensive experience in the Mold and Die industry. 30 years ago, I started as a machinist, and grew into owning my own shop in 2014. With my wide-ranging background, I think I can provide a pretty good perspective of the industry, both from the shop floor to the front office.\n\n**What's your name?**`, isUserMessage: false }]);
   const [socket, setSocket] = useState(null);
   const [currentMessage, setCurrentMessage] = useState('');
