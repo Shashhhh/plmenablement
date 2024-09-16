@@ -12,6 +12,7 @@ class Handler(AsyncWebsocketConsumer):
             'Value_prop': "asst_D6l7CGFwkpTuGQIR4Cw9SMAh",
             'Marketing_Assistant': "asst_bY3w88GhMu3IeGqtykL89YrA",
             'Case_study_finder': "asst_NFo1JypuJKH7vu7di0tqooTE",
+            'YoutubeGPT': 'asst_XSQ2jFimAvT3N122NwQxIdMO',
         }
         self.assistant_choice = self.scope["url_route"]["kwargs"]["assistant_choice"]
         self.thread = await self.client.beta.threads.create()
