@@ -154,4 +154,5 @@ CHANNEL_LAYERS = {
 CORS_ALLOWED_ORIGINS = [
     "https://plmenablement.onrender.com",
     "http://localhost:5173",
+    "https://siemensgpt.onrender.com",
 ]
