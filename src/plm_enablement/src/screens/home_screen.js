@@ -5,6 +5,7 @@ import '../home.css';
 export default function HomeScreen() {
   const navigate = useNavigate();
 
+  const isUnderConstruction = true;
   return (
     <div className='App'>
       <div className="homeContainer">
@@ -17,21 +18,37 @@ export default function HomeScreen() {
           </h5>
         </div>
   
-      <div className="bodyContainer">
-      <div>
-        <button className="MachinistButton" onClick={() => navigate('/chat?assistantChoice=Machinist')}>
-            Learn About the Industry
-          </button>
-          <button className="DiscoveryButton" onClick={() => navigate('/chat?assistantChoice=Discovery')}>
-            Practice your Discovery
-          </button>
-          <button className="SalesButton" onClick={() => navigate('/chat?assistantChoice=Sales_call')}>
-            Simulate a Sales Call
-        </button>
-      </div>
+        <div className="bodyContainer">
+          <div>
+            <button 
+              className="MachinistButton" 
+              onClick={() => navigate('/chat?assistantChoice=Machinist')}
+            >
+              Learn About the Industry
+            </button>
+            <button 
+              className="DiscoveryButton" 
+              onClick={() => navigate('/chat?assistantChoice=Discovery')}
+              disabled={isUnderConstruction} // Disable the button if under construction
+            >
+              Practice your Discovery
+            </button>
+            <button 
+              className="SalesButton" 
+              onClick={() => navigate('/chat?assistantChoice=Sales_call')}
+              disabled={isUnderConstruction} 
+            >
+              Simulate a Sales Call
+            </button>
 
+            {isUnderConstruction && (
+              <p className="constructionMessage">
+                This feature is currently under construction.
+              </p>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
