@@ -1,5 +1,6 @@
 # PLM Enablement for Tool and Die Shops
-ChatGPT powered training simulator to help Siemens sale reps learn about the tool and die shop industry, practice their discovery, and simulate a sales call.
+ChatGPT powered training simulator to help Siemens sale reps learn about the tool and die shop industry, practice their discovery, and simulate a sales call.\
+[Check out the website!](https://plmenablement.onrender.com)
 ## Project Status
 This project is currently still in development. User can currently chat with the learn about the industry assistant. Other assistants, clear/new chat, chat history, and file upload coming in the future.
 ## Project Screenshots
