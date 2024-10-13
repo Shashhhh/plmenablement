@@ -37,3 +37,4 @@ class Handler(AsyncWebsocketConsumer):
         async for chunk in stream:
             if isinstance(chunk, ThreadMessageDelta):
                 await self.send(text_data=json.dumps({'delta': chunk.data.delta.content[0].text.value}))
+        await self.send(text_data=json.dumps({'type': 'end'}))
