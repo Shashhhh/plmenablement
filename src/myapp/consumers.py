@@ -24,27 +24,17 @@ class Handler(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         user_input = text_data.strip()
         assistant_id = self.assistant_ids.get(self.assistant_choice, self.assistant_ids['Value_prop'])
-        try:
-            print(f"Received message from client: {user_input}")
-
-            message = await self.client.beta.threads.messages.create(
+        message = await self.client.beta.threads.messages.create(
                 thread_id=self.thread.id,
                 role="user",
-                content=user_input
-            )
-            print(f"Created message in thread: {message.id}")
-
-            stream = await self.client.beta.threads.runs.create(
+                content= user_input
+                )
+        stream = await self.client.beta.threads.runs.create(
                 assistant_id=assistant_id,
                 thread_id=self.thread.id,
                 stream=True
-            )
-            print(f"Started stream for assistant: {assistant_id}")
-
-            async for chunk in stream:
-                if isinstance(chunk, ThreadMessageDelta):
-                    await self.send(text_data=json.dumps({'delta': chunk.data.delta.content[0].text.value}))
-        except Exception as e:
-            print(f"Error during receive: {e}")
-            await self.send(text_data=json.dumps({'error': str(e)}))
-
+                )
+        async for chunk in stream:
+            if isinstance(chunk, ThreadMessageDelta):
+                await self.send(text_data=json.dumps({'delta': chunk.data.delta.content[0].text.value}))
+        await self.send(text_data=json.dumps({'type': 'end'}))
