@@ -8,11 +8,6 @@ logger = logging.getLogger(__name__)
 class Handler(AsyncWebsocketConsumer):
     
     async def connect(self):
-        headers = dict(self.scope.get('headers', []))
-        for header in headers:
-            header_name = header.decode('utf-8')
-            header_value = headers[header].decode('utf-8')
-            logger.info(f"Header: {header_name} => {header_value}")
         self.client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
         self.assistant_ids = {
             'Machinist': "asst_Mn4aCCQPzF5dJJD80Paq5uRU",
@@ -26,7 +21,11 @@ class Handler(AsyncWebsocketConsumer):
         await self.accept()
 
     async def disconnect(self, close_code):
-        pass
+        headers = dict(self.scope.get('headers', []))
+        for header in headers:
+            header_name = header.decode('utf-8')
+            header_value = headers[header].decode('utf-8')
+            logger.info(f"Disconnected Header: {header_name} => {header_value}")
 
     async def receive(self, text_data):
         user_input = text_data.strip()
