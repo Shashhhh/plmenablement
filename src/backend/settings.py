@@ -156,3 +156,23 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://siemensgpt.onrender.com",
 ]
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'django.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',  
+            'propagate': True,
+        },
+    },
+}

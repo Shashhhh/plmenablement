@@ -3,19 +3,16 @@ from django.conf import settings
 import json
 from openai import AsyncOpenAI
 from openai.types.beta.assistant_stream_event import ThreadMessageDelta
+import logging
+logger = logging.getLogger(__name__)
 class Handler(AsyncWebsocketConsumer):
     
     async def connect(self):
         headers = dict(self.scope.get('headers', []))
-        x_ratelimit_limit_requests = headers.get(b'x-ratelimit-limit-requests', b'').decode('utf-8')
-        x_ratelimit_limit_tokens = headers.get(b'x-ratelimit-limit-tokens', b'').decode('utf-8')
-        x_ratelimit_remaining_requests = headers.get(b'x-ratelimit-remaining-requests', b'').decode('utf-8')
-        x_ratelimit_remaining_tokens = headers.get(b'x-ratelimit-remaining-tokens', b'').decode('utf-8')
-        
-        print(f"Rate Limit (Requests): {x_ratelimit_limit_requests}")
-        print(f"Rate Limit (Tokens): {x_ratelimit_limit_tokens}")
-        print(f"Remaining Requests: {x_ratelimit_remaining_requests}")
-        print(f"Remaining Tokens: {x_ratelimit_remaining_tokens}")
+        for header in headers:
+            header_name = header.decode('utf-8')
+            header_value = headers[header].decode('utf-8')
+            logger.info(f"Header: {header_name} => {header_value}")
         self.client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
         self.assistant_ids = {
             'Machinist': "asst_Mn4aCCQPzF5dJJD80Paq5uRU",
