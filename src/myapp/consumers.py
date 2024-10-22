@@ -2,17 +2,12 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from django.conf import settings
 import json
 from openai import AsyncOpenAI
-from openai.types.beta.assistant_stream_event import ThreadMessageDelta
+from openai.types.beta.assistant_stream_event import ThreadMessageDelta, ThreadRunFailed
 import logging
 logger = logging.getLogger(__name__)
 class Handler(AsyncWebsocketConsumer):
     
     async def connect(self):
-        headers = dict(self.scope.get('headers', []))
-        for header in headers:
-            header_name = header.decode('utf-8')
-            header_value = headers[header].decode('utf-8')
-            logger.info(f"Header: {header_name} => {header_value}")
         self.client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
         self.assistant_ids = {
             'Machinist': "asst_Mn4aCCQPzF5dJJD80Paq5uRU",
@@ -41,7 +36,12 @@ class Handler(AsyncWebsocketConsumer):
                 thread_id=self.thread.id,
                 stream=True
                 )
+
         async for chunk in stream:
+            if isinstance(chunk, ThreadRunFailed):
+                await self.send(text_data=json.dumps({'delta': "Sorry, we're currently experiencing issues with our service. Please try again later."}))
+                break
+
             if isinstance(chunk, ThreadMessageDelta):
                 await self.send(text_data=json.dumps({'delta': chunk.data.delta.content[0].text.value}))
         await self.send(text_data=json.dumps({'type': 'end'}))
